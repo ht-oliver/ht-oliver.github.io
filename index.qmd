@@ -4,7 +4,17 @@ title: "Henry Oliver - *The Website*"
 
 # Sample Text
 
-## Sample Texas
+## Sample Text
+
+### Sample Text
+
+#### Sample Text
+
+##### Sample Text
+
+###### Sample *Text*
+
+####### Sample **Text**
 
 **Sample TEXT**
 
