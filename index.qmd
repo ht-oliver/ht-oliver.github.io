@@ -1,6 +1,21 @@
 ---
 title: "Henry Oliver - *The Website*"
+image: hto_cropped.jpg
+about: 
+  template: trestles
+  image-shape: round
+  links: 
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/henryoliver
+      target: _blank
+    - text: GitHub
+      href: https://github.com/ht-oliver
+    - text: Email
+      href: mailto:h_oliver@ucsb.bren.edu
 ---
+
+## Bio
+Henry Oliver is currently pursuing a Masters Degree in Environmental Data Science at UCSB. Henry’s professional interest in environmental work began in high school at the University of New Mexico’s Southwest Environmental Finance Center, where he performed research that would inform design and management practices for municipal water utilities in the American Southwest. This experience encouraged Henry to study Environmental Science and Geography at the University of Texas, where his classwork and senior capstone research focused on the employment of geospatial analysis tools and scientific communication to synthesize historical agricultural data. After obtaining a BS in Environmental Science, Henry worked for the Texas Commission on Environmental Quality as a researcher with the drinking water distribution section. Henry’s work in public utility management and environmental health has highlighted vulnerabilities of our global fresh water and drinking water infrastructure, encouraging him to pursue a degree at UCSB that will help him further investigate these vulnerabilities, and ideally design and implement solutions for future generations. 
 
 # Sample Text
 
