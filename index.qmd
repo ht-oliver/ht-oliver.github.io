@@ -6,7 +6,7 @@ about:
   image-shape: round
   links: 
     - text: LinkedIn
-      href: https://www.linkedin.com/in/henryoliver
+      href: https://www.linkedin.com/in/henry-oliver-37143516b/
       target: _blank
     - text: GitHub
       href: https://github.com/ht-oliver
