@@ -1,6 +1,6 @@
 ---
 title: "Henry Oliver - *The Website*"
-image: hto_cropped.jpg
+image: hto_cropped.jpeg
 about: 
   template: trestles
   image-shape: round
