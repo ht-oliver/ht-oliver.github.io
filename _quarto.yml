@@ -11,15 +11,17 @@ website:
       - about.qmd
       - href: resources.qmd
         text: Resources
+      - icon: github
+        href: https://github.com/ht-oliver/mysite
+
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
+    theme: styles.scss
     toc: true
     page-layout: full
+    mainfont: Nunito
+    
 
 editor: visual
 
