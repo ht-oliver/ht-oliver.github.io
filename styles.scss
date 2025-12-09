@@ -1,0 +1,22 @@
+  /* -- scss:defaults--*/
+  
+  // Import google fonts
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000   ;1,200..1000&family=Vesper+Libre:wght@400;500;700;900&display=swap');
+  
+  
+  // is a comment
+  // colors
+  $light-blue: #BFCCC9
+  $light-tan: #DFAC80
+  $dark-brown: #3A3A1F
+  $dark-blue: #193C4D
+  $red-brown: #8F5041
+  
+  // define quarto variables
+  $body-bg: $light-blue;
+  $navbar-bg: $dark-blue;
+  $footer-bg: $dark-blue;
+  $navbar-fg: $dark-brown;
+  $navbar-hl: $red-brown;
+  
+  /* -- scss:rules--*/
