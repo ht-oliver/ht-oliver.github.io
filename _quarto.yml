@@ -3,12 +3,13 @@ project:
   output-dir: docs
 
 website:
-  title: "ht-oliver.github.io"
+  title: "Henry Oliver"
   navbar:
     right:
       - href: index.qmd
         text: Home
       - about.qmd
+      - posts.qmd
       - href: resources.qmd
         text: Resources
       - icon: github
