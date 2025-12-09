@@ -14,30 +14,27 @@ about:
       href: https://github.com/ht-oliver
     - text: Email
       href: mailto:h_oliver@ucsb.bren.edu
+toc: false
 ---
 
 ## Bio
 Hello! I'm Henry Oliver. Over the last decade I've worked with universities, state government, and private industry in a variety of data analysis, GIS, and research roles. I have three years of professional experience in groundwater resource management and distribution, and an academic focus on spatial data analysis, and land-use change over time.
 
-# Sample Text
+<!-- # Sample Text -->
 
-## Sample Text
+<!-- ## Sample Text -->
 
-### Sample Text
+<!-- ### Sample Text -->
 
-#### Sample Text
+<!-- #### Sample Text -->
 
-##### Sample Text
+<!-- ##### Sample Text -->
 
-###### Sample *Text*
+<!-- ###### Sample *Text* -->
 
-####### Sample **Text**
+<!-- ####### Sample **Text** -->
 
-**Sample TEXT**
+<!-- **Sample TEXT** -->
 
-*Sample Text*
+<!-- *Sample Text* -->
 
-```{r}
-
-
-```
