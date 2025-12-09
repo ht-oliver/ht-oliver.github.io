@@ -1,0 +1,14 @@
+
+
+# re-render posts only when a change to the source file is made ----
+freeze: auto
+
+# enable banner style title blocks ----
+title-block-banner: true
+
+# my author info ----
+author:
+  - name: Henry Oliver
+    url: https://ht-oliver.github.io/
+    affiliation: Master of Environmental Data Science Program @ The Bren School (UCSB) 
+    affiliation-url: https://ucsb-meds.github.io/ 

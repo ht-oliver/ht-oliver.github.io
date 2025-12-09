@@ -1,0 +1,26 @@
+---
+title: "My Introductions to Data Science"
+description: "How fishing and hiking turned into a career with computers"
+author: 
+  - name: Henry Oliver
+    url: https://ht-oliver.github.io/
+    affiliation: The Bren School of Environmental Science and Management
+    affiliation-url: https://bren.ucsb.edu
+    orcid: 
+date: 2025-11-12
+categories: [MEDS, R, GIS]
+image: cutthroattrout0-3.jpg
+citation: 
+  url: https://ht-oliver.github.io/posts/first_post
+bibliography: references.bib
+---
+
+This is where the body of my blog post begins! I'm going to add a footnote here \[\^1\]. Here' an inline footnote[^1]
+
+[^1]: here's my inline note
+
+\[\^1: Here is some additional context that might be helpful.
+
+Here I can cite my teacher Sam[@shanny-csik2022]
+
+Let's cite a paper using it's DOI [@jasechko2024]
