@@ -5,6 +5,7 @@ date: "December 6, 2025"
 format: 
   html:
     code-fold: true
+    message: false
 ---
 
 ## Background
@@ -21,12 +22,12 @@ The purpose of this analysis is to provide maps and statistics that summarize th
 
 Each section below shows the necessary code (in R Studio) to produce the results visualized at the end of this analysis. Click the arrows to expand and view the code within each chunk
 
-##### Prepare environment - load libraries
+##### **Prepare environment - load libraries**
 
 ```{r}
-
-#| code_folding: hide 
+#| code_folding: hide
 #| message: false
+
 library(tidyverse)
 library(sf)
 library(terra)
@@ -62,11 +63,13 @@ eez <- st_read(here::here("posts", "aquaculture_eez", "data", "wc_regions_clean.
 ```
 
 ```{r}
+#| message: false
 tm_shape(sst_rast[[1]])+
   tm_raster()
 ```
 
 ```{r}
+#| message: false
 tm_shape(bathymetry) +
   tm_raster()
 ```
@@ -74,6 +77,7 @@ tm_shape(bathymetry) +
 In order to quantify the regional viability of aquaculture across the Pacific Coast the coastline is broken up into five Exclusive Economic Zones (EEZs), Pictured below.
 
 ```{r}
+#| message: false
 tm_shape(eez) +
   tm_borders()
 ```
@@ -82,9 +86,10 @@ tm_shape(eez) +
 
 In order for the SST and bathymetry data to be useful in conjunction with the shapes of our EEZs, several modifications are necessary. We need to make sure everything is in relevant units, and that all of our *Coordinate Reference Systems* match up. A coordinate reference system (CRS) defines how the two- or three-dimensional positions in a dataset correspond to real locations on Earth by specifying the underlying Earth model, units, and mathematical framework for positioning. It provides the essential rules that allow spatial data from different sources to be compared, aligned, and analyzed consistently.
 
-#### Calculate mean surface temperature in degrees Celsius
+##### Calculate mean surface temperature in degrees Celsius
 
 ```{r}
+#| message: false
 # Calculate the mean sea surface temperature, adjust from K to C
 mean_sst <- mean(sst_rast) - 273.15
 
@@ -95,11 +100,9 @@ target_crs <- "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs"
 # Reproject sst to UTM Zone 11N with meters
 sst_reprojected <- project(mean_sst, target_crs)
 
-# Check values
-sst_reprojected
 ```
 
-#### Adjust bathymetry data and combine with reprojected SST data
+##### Adjust bathymetry data and combine with reprojected SST data
 
 ```{r}
 bathymetry_reprojected <-  project(bathymetry, sst_reprojected) %>% # Reproject
@@ -166,6 +169,7 @@ tm_shape(oyster_mask) +
 In order to find the area of our suitable habitat, we'll have to extract and sum height and width data from each pixel of our projected data. The code below shows how that can be done.
 
 ```{r}
+#| warning: false
 # Clip oyster habitat to eez extent with mask
 oyster_crop <- crop(oyster_mask, eez_proj)
 oyster_eez <- mask(oyster_crop, eez_proj)
@@ -256,7 +260,7 @@ eez_zones_table
 
 The map and table above show that Central and Southern California have the most suitable area for Oyster aquaculture, whereas Northern California and Oregon have notably lower suitable area for Oyster aquaculture. This figure would suggest that aquaculture efforts for oysters would be best suited for the southern portion of the American West Coast.
 
-### Function for Chosen Species - Pacific calico scallop **Argopecten ventricosus**
+### Function for Chosen Species - Pacific calico scallop *Argopecten ventricosus*
 
 Now that we've got a pathway for identifying suitable aquaculture range, let's try it for another species.
 
@@ -265,20 +269,28 @@ Now that we've got a pathway for identifying suitable aquaculture range, let's t
 Here we will employ my 'aquaculture_range' function that takes temperature range and depth range for a target species, and produces similar figures to those generated above for Oysters. This function takes a range of temperatures and depths and performs the following tasks completed above for our oysters.
 
 1)  Ensure CRS match for EEZ, SST and Depth
-2)  Converts Temperature to Degrees Celsius
-3)  Reclassifies SST and Depth rasters
-4)  Finds overlap in suitable SST and Depth
+2)  Converts Temperature from Degrees Kelvin to Celsius
+3)  Reclassifies SST and Depth rasters into suitable and non-suitable categories
+4)  Finds overlap in reclassified SST and Depth
 5)  Crops overlap to EEZ Zones
 6)  Calculates area of suitable habitat per EEZ Zone
 7)  Produces a Map and a table
 
 ```{r}
+#| warning: false
 #| message: false
 # Source function
 source(here::here("posts", "aquaculture_eez", "functions", "aquaculture_habitat_function.R"))
 
 # Check Function for Pacific calico scallop
-aquaculture_range(11, 28.5, -180, 0, species_name = "Argopecten ventricosus")
+pcs_results <- aquaculture_range(11, 28.5, -180, 0, species_name = "Argopecten ventricosus")
+
+pcs_results$map
+
+# Display the table
+knitr::kable(pcs_results$table, 
+             caption = "Suitable Habitat Area by Region *Argopecten ventricosus*",
+             col.names = c("Region", "Suitable Area (km²)"))
 
 ```
 

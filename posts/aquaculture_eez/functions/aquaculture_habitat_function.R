@@ -15,7 +15,7 @@ aquaculture_range <- function(sst_min, sst_max, depth_min, depth_max, species_na
   target_crs <- "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs"
   
   # Reproject sst to UTM Zone 11N with meters
-  sst_reprojected <- project(mean_sst, target_crs)
+  sst_reprojected <- project(adjusted_mean_sst, target_crs)
   
   # Create a matrix to reclassify SST
   sst_matrix <- matrix(c(
@@ -48,8 +48,11 @@ aquaculture_range <- function(sst_min, sst_max, depth_min, depth_max, species_na
   # Reproject
   eez_proj <- st_transform(eez, crs(species_mask))
   
+  # Convert to SpatVector for zonal function
+  eez_vect <- vect(eez_proj)
+  
   # Clip species habitat to eez extent with mask
-  species_eez <- mask(species_mask, vect(eez_proj))
+  species_eez <- mask(species_mask, eez_vect)
   
   # Get cellsizes in m^2
   species_cell_sizes <- cellSize(species_eez, unit = "m")
