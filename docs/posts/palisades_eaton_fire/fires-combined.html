@@ -444,24 +444,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>Now lets take a look at our plots, separately, using the <code>.plot()</code> method.</p>
+<div id="e5615c74" class="cell" data-execution_count="54">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))  <span class="co"># 1 row, 2 columns</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>eaton.plot(ax<span class="op">=</span>ax1)  <span class="co"># Plot Eaton</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Eaton'</span>)  <span class="co"># Add title</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax1.axis(<span class="st">'off'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>palisades.plot(ax<span class="op">=</span>ax2)  <span class="co"># Plot palisades in second column</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Palisades'</span>)  <span class="co"># Add title</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ax2.axis(<span class="st">'off'</span>)<span class="op">;</span> <span class="co"># ';' suppresses output of bounds</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fires-combined_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <section id="what-did-we-learn" class="level4">
 <h4 class="anchored" data-anchor-id="what-did-we-learn">What did we learn?</h4>
 <p>The <code>type()</code> method showed us that both <code>palisades</code> and <code>eaton</code> are classified as <code>geopandas.geodatafame.GeoDataFrame</code>. This tells us that they’re special types of dataframes designed for working with maps and geographic data, not just regular numbers and text</p>
 <p>The <code>head()</code> method shows us the first 5 rows in our geodataframe. This shows us that our shapefile is comprised of multiple polygons, and we’re only dealing with 5 data columns.</p>
+<p>Our ‘.plot()’ shows us the general shape of each fire. This will be important when we make labels for our combined map later.</p>
 </section>
 <section id="crs-and-projection" class="level4">
-<h4 class="anchored" data-anchor-id="crs-and-projection"><strong>CRS and Projection</strong></h4>
+<h4 class="anchored" data-anchor-id="crs-and-projection">CRS and Projection</h4>
 <p>Next, we want to confirm that we’ll be able to use these shapefiles in the same plot. In order to do so, our Geodataframes must share a Coordinate Reference System (CRS). A CRS defines how spatial data like shapefiles and rasters are projected onto the Earth’s surface, ensuring that their locations align correctly when plotted with GIS systems. We will check our CRS with the <code>.crs</code> attribute. Then we’ll check if the CRS is projected or geographic. A projected CRS flattens the curved surface of the Earth onto a 2D map using a specific mathematical projection, while a geographic CRS describes locations directly with latitude and longitude on a spherical or ellipsoidal Earth.</p>
 <div id="1dd919b1" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check CRS</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Eaton CRS is: </span><span class="sc">{</span>eaton<span class="sc">.</span>crs<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Palisades CRS is: </span><span class="sc">{</span>palisades<span class="sc">.</span>crs<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> eaton.crs <span class="op">==</span> palisades.crs <span class="co"># Returns error if CRS don't match</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if projected</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Eaton CRS is projected. </span><span class="sc">{</span>eaton<span class="sc">.</span>crs<span class="sc">.</span>is_projected<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Palisades CRS is projected. </span><span class="sc">{</span>palisades<span class="sc">.</span>crs<span class="sc">.</span>is_projected<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (eaton.crs.is_projected <span class="kw">and</span> palisades.crs.is_projected) <span class="op">==</span> <span class="va">True</span> <span class="co"># Returns error if not projected</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check CRS</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Eaton CRS is: </span><span class="sc">{</span>eaton<span class="sc">.</span>crs<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Palisades CRS is: </span><span class="sc">{</span>palisades<span class="sc">.</span>crs<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> eaton.crs <span class="op">==</span> palisades.crs <span class="co"># Returns error if CRS don't match</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if projected</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Eaton CRS is projected. </span><span class="sc">{</span>eaton<span class="sc">.</span>crs<span class="sc">.</span>is_projected<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Palisades CRS is projected. </span><span class="sc">{</span>palisades<span class="sc">.</span>crs<span class="sc">.</span>is_projected<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (eaton.crs.is_projected <span class="kw">and</span> palisades.crs.is_projected) <span class="op">==</span> <span class="va">True</span> <span class="co"># Returns error if not projected</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Eaton CRS is: EPSG:3857
 Palisades CRS is: EPSG:3857
@@ -469,37 +487,21 @@ Eaton CRS is projected. True
 Palisades CRS is projected. True</code></pre>
 </div>
 </div>
-<p>Now lets take a look at our plots, separately, using the <code>.plot()</code> method.</p>
-<div id="741fa516" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preliminary plots</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> eaton.plot()</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Eaton"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> palisades.plot()</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Palisades"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>Text(0.5, 1.0, 'Palisades')</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-7-output-3.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="741fa516" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[44]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> fig, ax = <span class="ansi-yellow-bg">axis</span>
+<span class="ansi-green-fg">      3</span> eaton.plot()
+<span class="ansi-green-fg">      4</span> ax.title = <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">Eaton</span><span class="ansi-yellow-fg">'</span>
+
+<span class="ansi-red-fg">NameError</span>: name 'axis' is not defined</pre>
 </div>
 </div>
 </div>
-</section>
-<section id="what-did-we-learn-1" class="level4">
-<h4 class="anchored" data-anchor-id="what-did-we-learn-1"><strong>What did we learn?</strong></h4>
-<p>Our CRS is EPSG:3857 and is projected, which means is better suited for measurements and plotting on a 2D map. This is exactly what we want.</p>
-<p>Now that we know our CRSs match, we can combine our fires into a single file.</p>
 <div id="3be3c394" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine eaton and palisades shapefiles</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fires <span class="op">=</span> gpd.GeoDataFrame(pd.concat([eaton, palisades]))</span>
@@ -509,7 +511,7 @@ Palisades CRS is projected. True</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="fires-combined_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -545,8 +547,8 @@ Palisades CRS is projected. True</code></pre>
 None</code></pre>
 </div>
 </div>
-<section id="what-did-we-learn-2" class="level4">
-<h4 class="anchored" data-anchor-id="what-did-we-learn-2"><strong>What did we learn?</strong></h4>
+<section id="what-did-we-learn-1" class="level4">
+<h4 class="anchored" data-anchor-id="what-did-we-learn-1"><strong>What did we learn?</strong></h4>
 <p>We found our that our landsat data is a <code>xarray</code> dataset, which is a essentially a multi-dimensional set of arrays. By printing <code>landsat</code> we were able to access the number of bands, the dimensions, and the CRS for x and y coordinate. We’re also able to tell that this data has 5 spectral bands including: red, green, nir08, and swir22.</p>
 <p><strong>Click the page icon by the x coordinate on this list to view attributes for the coordinate system. This should tell us the CRS.</strong></p>
 <p>The CRS for the x and y coordinates is EPSG:32611, and it is projected. Finally also able to see that the units of the CRS are meters, and the resolution is 30x30 meters. Unfortunately, our CRS is not assigned, we just know that our coordinates use EPSG:32611. Next, we’ll need to assign a CRS to our <code>landsat</code> object.</p>
@@ -591,7 +593,7 @@ None</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-12-output-3.png" class="img-fluid figure-img"></p>
+<p><img src="fires-combined_files/figure-html/cell-13-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -607,7 +609,7 @@ None</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-13-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="fires-combined_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1484,7 +1486,7 @@ Data variables:
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="fires-combined_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1502,7 +1504,7 @@ Data variables:
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="fires-combined_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1575,7 +1577,7 @@ Data variables:
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="fires-combined_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1770,8 +1772,8 @@ EJI CRS is: ESRI:102003</code></pre>
 </div>
 </div>
 </div>
-<section id="what-did-we-learn-3" class="level4">
-<h4 class="anchored" data-anchor-id="what-did-we-learn-3"><strong>What did we learn</strong></h4>
+<section id="what-did-we-learn-2" class="level4">
+<h4 class="anchored" data-anchor-id="what-did-we-learn-2"><strong>What did we learn</strong></h4>
 <p>Now we know that our EJI data is a <code>pandas.geodataframe.GeoDataFrame</code>, similar to our fire perimeter data. We also know that our CRS is projected, and is ‘ESRI:102003’. This is not the same CRS as our fire perimeter data, we’ll have to fix that before we can use these datasets together.</p>
 </section>
 </section>
@@ -1805,7 +1807,7 @@ EJI CRS is: ESRI:102003</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="fires-combined_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1831,7 +1833,7 @@ EJI CRS is: ESRI:102003</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="fires-combined_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="fires-combined_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

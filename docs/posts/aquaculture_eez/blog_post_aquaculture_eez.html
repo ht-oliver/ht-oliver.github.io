@@ -194,19 +194,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
-  <li><a href="#purpose-and-workflow" id="toc-purpose-and-workflow" class="nav-link" data-scroll-target="#purpose-and-workflow">Purpose and Workflow</a>
-  <ul class="collapse">
+  <li><a href="#purpose-and-workflow" id="toc-purpose-and-workflow" class="nav-link" data-scroll-target="#purpose-and-workflow">Purpose and Workflow</a></li>
   <li><a href="#criteria-for-aquaculture-viability" id="toc-criteria-for-aquaculture-viability" class="nav-link" data-scroll-target="#criteria-for-aquaculture-viability">Criteria for Aquaculture Viability</a></li>
   <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
-  </ul></li>
-  <li><a href="#oysters" id="toc-oysters" class="nav-link" data-scroll-target="#oysters">Oysters</a>
-  <ul class="collapse">
+  <li><a href="#oysters" id="toc-oysters" class="nav-link" data-scroll-target="#oysters">Oysters</a></li>
   <li><a href="#reclassification-of-criteria-raster-values" id="toc-reclassification-of-criteria-raster-values" class="nav-link" data-scroll-target="#reclassification-of-criteria-raster-values">Reclassification of Criteria Raster Values</a></li>
   <li><a href="#finding-the-area-of-our-suitable-habitat" id="toc-finding-the-area-of-our-suitable-habitat" class="nav-link" data-scroll-target="#finding-the-area-of-our-suitable-habitat">Finding the Area of our suitable habitat</a></li>
   <li><a href="#suitable-habitat-per-eez-zone" id="toc-suitable-habitat-per-eez-zone" class="nav-link" data-scroll-target="#suitable-habitat-per-eez-zone">Suitable habitat per EEZ Zone</a></li>
   <li><a href="#interpretation-of-figures" id="toc-interpretation-of-figures" class="nav-link" data-scroll-target="#interpretation-of-figures">Interpretation of Figures</a></li>
-  <li><a href="#function-for-chosen-species---pacific-calico-scallop-argopecten-ventricosus" id="toc-function-for-chosen-species---pacific-calico-scallop-argopecten-ventricosus" class="nav-link" data-scroll-target="#function-for-chosen-species---pacific-calico-scallop-argopecten-ventricosus">Function for Chosen Species - Pacific calico scallop <strong>Argopecten ventricosus</strong></a></li>
-  <li><a href="#interpretation-of-figure-for-argopecten-ventricosus" id="toc-interpretation-of-figure-for-argopecten-ventricosus" class="nav-link" data-scroll-target="#interpretation-of-figure-for-argopecten-ventricosus">Interpretation of Figure for <em>Argopecten ventricosus</em></a></li>
+  <li><a href="#function-application---pacific-calico-scallop-argopecten-ventricosus" id="toc-function-application---pacific-calico-scallop-argopecten-ventricosus" class="nav-link" data-scroll-target="#function-application---pacific-calico-scallop-argopecten-ventricosus">Function Application - Pacific calico scallop <em>Argopecten ventricosus</em></a></li>
+  <li><a href="#interpretation-of-figure-for-argopecten-ventricosus" id="toc-interpretation-of-figure-for-argopecten-ventricosus" class="nav-link" data-scroll-target="#interpretation-of-figure-for-argopecten-ventricosus">Interpretation of Figure for <em>Argopecten ventricosus</em></a>
+  <ul class="collapse">
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -231,8 +229,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="purpose-and-workflow">Purpose and Workflow</h2>
 <p>The purpose of this analysis is to provide maps and statistics that summarize the total area of suitable aquaculture habitat for various species of farmed aquatic species. First, the extent of aquaculture habitat for oysters in 5 west-coast economic zones will be determined. Then, I employ a function which allows a user to input ranges for depth in meters and temperature in degrees Celsius for a target species, and yield a similar map and table which summarizes approximate viable aquaculture area for each economic zone.</p>
 <p>Each section below shows the necessary code (in R Studio) to produce the results visualized at the end of this analysis. Click the arrows to expand and view the code within each chunk</p>
-<section id="prepare-environment---load-libraries" class="level5">
-<h5 class="anchored" data-anchor-id="prepare-environment---load-libraries"><strong>Prepare environment - load libraries</strong></h5>
+<section id="prepare-environment---load-libraries" class="level6">
+<h6 class="anchored" data-anchor-id="prepare-environment---load-libraries"><strong>Prepare environment - load libraries</strong></h6>
 <div class="cell" data-code_folding="hide">
 <details class="code-fold">
 <summary>Code</summary>
@@ -245,8 +243,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="criteria-for-aquaculture-viability" class="level3">
-<h3 class="anchored" data-anchor-id="criteria-for-aquaculture-viability">Criteria for Aquaculture Viability</h3>
+</section>
+<section id="criteria-for-aquaculture-viability" class="level2">
+<h2 class="anchored" data-anchor-id="criteria-for-aquaculture-viability">Criteria for Aquaculture Viability</h2>
 <p>For this analysis we’re looking at two key criteria that will determine the viability aquaculture for a given species in a given region. Ocean depth, and Temperature in degrees Celsius. In order to model this information I use Ocean Sea Surface Temperature (SST) raster data made available by GEBCO Compilation Group[2], and bathymetry (ocean depth) raster data also provided by GEBCO[2] (((NOTE: CONFIRM))). For the SST data, I model the 5-year average of SSTs off the US West Coast from 2008-2012. Figure 1 below shows SST values for the year of 2008 in degrees Kelvin. Figure 2 shows bathymetry.</p>
 <div class="cell">
 <details class="code-fold">
@@ -315,11 +314,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="data-cleaning" class="level3">
-<h3 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h3>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
 <p>In order for the SST and bathymetry data to be useful in conjunction with the shapes of our EEZs, several modifications are necessary. We need to make sure everything is in relevant units, and that all of our <em>Coordinate Reference Systems</em> match up. A coordinate reference system (CRS) defines how the two- or three-dimensional positions in a dataset correspond to real locations on Earth by specifying the underlying Earth model, units, and mathematical framework for positioning. It provides the essential rules that allow spatial data from different sources to be compared, aligned, and analyzed consistently.</p>
-<section id="calculate-mean-surface-temperature-in-degrees-celsius" class="level5">
-<h5 class="anchored" data-anchor-id="calculate-mean-surface-temperature-in-degrees-celsius">Calculate mean surface temperature in degrees Celsius</h5>
+<section id="calculate-mean-surface-temperature-in-degrees-celsius" class="level6">
+<h6 class="anchored" data-anchor-id="calculate-mean-surface-temperature-in-degrees-celsius">Calculate mean surface temperature in degrees Celsius</h6>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -335,8 +334,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="adjust-bathymetry-data-and-combine-with-reprojected-sst-data" class="level5">
-<h5 class="anchored" data-anchor-id="adjust-bathymetry-data-and-combine-with-reprojected-sst-data">Adjust bathymetry data and combine with reprojected SST data</h5>
+<section id="adjust-bathymetry-data-and-combine-with-reprojected-sst-data" class="level6">
+<h6 class="anchored" data-anchor-id="adjust-bathymetry-data-and-combine-with-reprojected-sst-data">Adjust bathymetry data and combine with reprojected SST data</h6>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -346,8 +345,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="adjust-eez-data-crs-and-dat-aformat" class="level5">
-<h5 class="anchored" data-anchor-id="adjust-eez-data-crs-and-dat-aformat">Adjust EEZ data CRS and dat aformat</h5>
+<section id="adjust-eez-data-crs-and-dat-aformat" class="level6">
+<h6 class="anchored" data-anchor-id="adjust-eez-data-crs-and-dat-aformat">Adjust EEZ data CRS and dat aformat</h6>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -360,15 +359,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-</section>
 <section id="oysters" class="level2">
 <h2 class="anchored" data-anchor-id="oysters">Oysters</h2>
 <p>The first species that we want to identify suitable aquaculture habitat for are Oysters. Oysters are effectively farmed at temperatures between 11-30 Degrees Celsius, and depths of 0-70 meters below ocean surface.</p>
 <section id="image-of-tasty-bivalve" class="level6">
 <h6 class="anchored" data-anchor-id="image-of-tasty-bivalve">[[IMAGE OF TASTY BIVALVE]]</h6>
 </section>
-<section id="reclassification-of-criteria-raster-values" class="level3">
-<h3 class="anchored" data-anchor-id="reclassification-of-criteria-raster-values">Reclassification of Criteria Raster Values</h3>
+</section>
+<section id="reclassification-of-criteria-raster-values" class="level2">
+<h2 class="anchored" data-anchor-id="reclassification-of-criteria-raster-values">Reclassification of Criteria Raster Values</h2>
 <p>We want to isolate the temperatures and ocean depths that have been identified as suitable aquaculture habitats for our targeted species. In order to do this, we must re-classify our temperature and depth data to add an indicator (1 or 0) or whether a position on the raster is viable (1) or non-viable (0) for aquaculture of the targeted species. Once we’ve created re-classified sst and depth rasters, we’ll combine them into a single suitable-habitat raster.</p>
 <div class="cell">
 <details class="code-fold">
@@ -414,8 +413,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="finding-the-area-of-our-suitable-habitat" class="level3">
-<h3 class="anchored" data-anchor-id="finding-the-area-of-our-suitable-habitat">Finding the Area of our suitable habitat</h3>
+<section id="finding-the-area-of-our-suitable-habitat" class="level2">
+<h2 class="anchored" data-anchor-id="finding-the-area-of-our-suitable-habitat">Finding the Area of our suitable habitat</h2>
 <p>In order to find the area of our suitable habitat, we’ll have to extract and sum height and width data from each pixel of our projected data. The code below shows how that can be done.</p>
 <div class="cell">
 <details class="code-fold">
@@ -471,8 +470,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Now, we want to see which of our EEZs have the most viable habitat. We can visualize that by color-coding our EEZs by the total area of suitable aquaculture habitat in each zone.</p>
 </section>
-<section id="suitable-habitat-per-eez-zone" class="level3">
-<h3 class="anchored" data-anchor-id="suitable-habitat-per-eez-zone">Suitable habitat per EEZ Zone</h3>
+<section id="suitable-habitat-per-eez-zone" class="level2">
+<h2 class="anchored" data-anchor-id="suitable-habitat-per-eez-zone">Suitable habitat per EEZ Zone</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -552,12 +551,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="interpretation-of-figures" class="level3">
-<h3 class="anchored" data-anchor-id="interpretation-of-figures">Interpretation of Figures</h3>
+<section id="interpretation-of-figures" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-of-figures">Interpretation of Figures</h2>
 <p>The map and table above show that Central and Southern California have the most suitable area for Oyster aquaculture, whereas Northern California and Oregon have notably lower suitable area for Oyster aquaculture. This figure would suggest that aquaculture efforts for oysters would be best suited for the southern portion of the American West Coast.</p>
 </section>
-<section id="function-for-chosen-species---pacific-calico-scallop-argopecten-ventricosus" class="level3">
-<h3 class="anchored" data-anchor-id="function-for-chosen-species---pacific-calico-scallop-argopecten-ventricosus">Function for Chosen Species - Pacific calico scallop <strong>Argopecten ventricosus</strong></h3>
+<section id="function-application---pacific-calico-scallop-argopecten-ventricosus" class="level2">
+<h2 class="anchored" data-anchor-id="function-application---pacific-calico-scallop-argopecten-ventricosus">Function Application - Pacific calico scallop <em>Argopecten ventricosus</em></h2>
 <p>Now that we’ve got a pathway for identifying suitable aquaculture range, let’s try it for another species.</p>
 <p>(((PICTURE OF TASTY SCALLOP)))</p>
 <p>Here we will employ my ‘aquaculture_range’ function that takes temperature range and depth range for a target species, and produces similar figures to those generated above for Oysters. This function takes a range of temperatures and depths and performs the following tasks completed above for our oysters.</p>
@@ -592,12 +591,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the table</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pcs_results<span class="sc">$</span>table, </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Suitable Habitat Area by Region"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Suitable Habitat Area by Region *Argopecten ventricosus*"</span>,</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Region"</span>, <span class="st">"Suitable Area (km²)"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
-<caption>Suitable Habitat Area by Region</caption>
+<caption>Suitable Habitat Area by Region <em>Argopecten ventricosus</em></caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Region</th>
@@ -630,10 +629,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="interpretation-of-figure-for-argopecten-ventricosus" class="level3">
-<h3 class="anchored" data-anchor-id="interpretation-of-figure-for-argopecten-ventricosus">Interpretation of Figure for <em>Argopecten ventricosus</em></h3>
+<section id="interpretation-of-figure-for-argopecten-ventricosus" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-of-figure-for-argopecten-ventricosus">Interpretation of Figure for <em>Argopecten ventricosus</em></h2>
 <p>The figure and table generated show that there is significantly more suitable aquaculture habitat for Pacific calico scallops <em>Argopecten ventricosus</em> than there is for oysters on the West Coast of the US. This is likely because the scallops survivable depth range is more than double that of oysters. Furthermore, water off the coast of Oregon state contains nearly 10x more suitable habitat than the zone directly south, Northern California.</p>
-</section>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <p>[1]https://www.fisheries.noaa.gov/national/aquaculture/us-aquaculture</p>

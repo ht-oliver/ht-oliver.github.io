@@ -22,7 +22,7 @@ The purpose of this analysis is to provide maps and statistics that summarize th
 
 Each section below shows the necessary code (in R Studio) to produce the results visualized at the end of this analysis. Click the arrows to expand and view the code within each chunk
 
-##### **Prepare environment - load libraries**
+###### **Prepare environment - load libraries**
 
 ```{r}
 #| code_folding: hide
@@ -36,7 +36,7 @@ library(patchwork)
 library(kableExtra)
 ```
 
-### Criteria for Aquaculture Viability
+## Criteria for Aquaculture Viability
 
 For this analysis we're looking at two key criteria that will determine the viability aquaculture for a given species in a given region. Ocean depth, and Temperature in degrees Celsius. In order to model this information I use Ocean Sea Surface Temperature (SST) raster data made available by GEBCO Compilation Group\[2\], and bathymetry (ocean depth) raster data also provided by GEBCO\[2\] (((NOTE: CONFIRM))). For the SST data, I model the 5-year average of SSTs off the US West Coast from 2008-2012. Figure 1 below shows SST values for the year of 2008 in degrees Kelvin. Figure 2 shows bathymetry.
 
@@ -82,11 +82,11 @@ tm_shape(eez) +
   tm_borders()
 ```
 
-### Data Cleaning
+## Data Cleaning
 
 In order for the SST and bathymetry data to be useful in conjunction with the shapes of our EEZs, several modifications are necessary. We need to make sure everything is in relevant units, and that all of our *Coordinate Reference Systems* match up. A coordinate reference system (CRS) defines how the two- or three-dimensional positions in a dataset correspond to real locations on Earth by specifying the underlying Earth model, units, and mathematical framework for positioning. It provides the essential rules that allow spatial data from different sources to be compared, aligned, and analyzed consistently.
 
-##### Calculate mean surface temperature in degrees Celsius
+###### Calculate mean surface temperature in degrees Celsius
 
 ```{r}
 #| message: false
@@ -102,7 +102,7 @@ sst_reprojected <- project(mean_sst, target_crs)
 
 ```
 
-##### Adjust bathymetry data and combine with reprojected SST data
+###### Adjust bathymetry data and combine with reprojected SST data
 
 ```{r}
 bathymetry_reprojected <-  project(bathymetry, sst_reprojected) %>% # Reproject
@@ -111,7 +111,7 @@ bathymetry_reprojected <-  project(bathymetry, sst_reprojected) %>% # Reproject
 
 ```
 
-##### Adjust EEZ data CRS and dat aformat
+###### Adjust EEZ data CRS and dat aformat
 
 ```{r}
 # Reproject
@@ -127,7 +127,7 @@ The first species that we want to identify suitable aquaculture habitat for are 
 
 ###### \[\[IMAGE OF TASTY BIVALVE\]\]
 
-### Reclassification of Criteria Raster Values
+## Reclassification of Criteria Raster Values
 
 We want to isolate the temperatures and ocean depths that have been identified as suitable aquaculture habitats for our targeted species. In order to do this, we must re-classify our temperature and depth data to add an indicator (1 or 0) or whether a position on the raster is viable (1) or non-viable (0) for aquaculture of the targeted species. Once we've created re-classified sst and depth rasters, we'll combine them into a single suitable-habitat raster.
 
@@ -164,7 +164,7 @@ tm_shape(oyster_mask) +
   tm_raster()
 ```
 
-### Finding the Area of our suitable habitat
+## Finding the Area of our suitable habitat
 
 In order to find the area of our suitable habitat, we'll have to extract and sum height and width data from each pixel of our projected data. The code below shows how that can be done.
 
@@ -212,7 +212,7 @@ habitat_map
 
 Now, we want to see which of our EEZs have the most viable habitat. We can visualize that by color-coding our EEZs by the total area of suitable aquaculture habitat in each zone.
 
-### Suitable habitat per EEZ Zone
+## Suitable habitat per EEZ Zone
 
 ```{r}
 #| message: False
@@ -256,11 +256,11 @@ eez_zones_table
 
 ```
 
-### Interpretation of Figures
+## Interpretation of Figures
 
 The map and table above show that Central and Southern California have the most suitable area for Oyster aquaculture, whereas Northern California and Oregon have notably lower suitable area for Oyster aquaculture. This figure would suggest that aquaculture efforts for oysters would be best suited for the southern portion of the American West Coast.
 
-### Function for Chosen Species - Pacific calico scallop *Argopecten ventricosus*
+## Function Application - Pacific calico scallop *Argopecten ventricosus*
 
 Now that we've got a pathway for identifying suitable aquaculture range, let's try it for another species.
 
@@ -294,7 +294,7 @@ knitr::kable(pcs_results$table,
 
 ```
 
-### Interpretation of Figure for *Argopecten ventricosus*
+## Interpretation of Figure for *Argopecten ventricosus*
 
 The figure and table generated show that there is significantly more suitable aquaculture habitat for Pacific calico scallops *Argopecten ventricosus* than there is for oysters on the West Coast of the US. This is likely because the scallops survivable depth range is more than double that of oysters. Furthermore, water off the coast of Oregon state contains nearly 10x more suitable habitat than the zone directly south, Northern California.
 
