@@ -137,7 +137,7 @@ bathymetry_reprojected <-  project(bathymetry, sst_reprojected) %>% # Reproject
 
 ```
 
-###### **Adjust EEZ data CRS and data aformat**
+###### **Adjust EEZ data CRS and data format**
 
 ```{r}
 # Reproject
