@@ -78,9 +78,12 @@ aquaculture_range <- function(sst_min, sst_max, depth_min, depth_max, species_na
     tm_scalebar(position = c(0, 0.075)) +
     tm_title(text = paste("Suitable Habitat for", species_name, "by Zone"))
   
-  eez_zones_table <-
-    st_drop_geometry(eez_suitable_area) %>% 
-    select(c('rgn', 'suitable_area'))
+  area_df <- st_drop_geometry(eez_suitable_area)
+  area_df <- area_df[, c('rgn', 'suitable_area')]
+  eez_zones_table <- kable(area_df, 
+                           col.names = c("Region", "Suitable Area (sq km)"),
+                           digits = 2)
+  eez_zones_table
   
   return(list(map = eez_zones_map, table = eez_zones_table))
 }
