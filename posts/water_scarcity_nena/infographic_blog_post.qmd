@@ -31,6 +31,62 @@ Because of these challenges, reported withdrawal volumes may underestimate the t
 
 # Submission Requirements
 
+#### Ten Design Elements
+
+1) graphic form (you are not limited to just those fundamental chart types discussed in weeks 2 & 4 – explore other chart types and don’t be afraid to get creative with it; check out some of these awesome data viz creators to find inspiration)
+
+I combined maps and a line chart to show my trend! I'm also using a waffle chart to show ratios of resources and use
+
+
+
+2) text (e.g. titles, captions, annotations, axis labels, axis text)
+
+I'm adding captions to all of my figures, and labeling my data as necessary. Much of this labeling was done in Affinity because positioning my labeling and getting fonts to work was proving to be frustrating. Most of my axis labeling is just years - I want people to focus on trends, not units. I do have legends with labeled units.
+
+
+3) themes (i.e. all non-data plot elements; these should be intentionally modified and visually-pleasing)
+
+Themes are very minimal, and they follow my color scheme - desert oasis. I used AI to help me with theme syntax, but I wanted everything to be stripped down.
+
+
+
+4) colors
+
+I use the Mako viridis color palette, and a sandy brown background to give the vibe of water in the desert. I think it looks refreshing
+
+
+5) typography
+
+My font size, color, and positioning is very purposeful. Interpretations are written in futura, while and investigating questions are in my other font. I tried to lay it out so that the reader reads the infographic from top to bottom, and then goes back to read little things in italics.
+
+
+
+6) general design (e.g. group order, spacing, text orientation, data-ink ratio, creating a visual hierarchy, avoiding information overload)
+
+I want to have things flow from top to bottom. I think that middle of my map and line graph figures get pretty busy, but the trend is clear and that's the most important bit. Most importantly, I want to show my cool trend, show the conflicting trend, and then contextualize both. 
+
+
+7) contextualizing your data
+
+I contextualize my data with a brief description at the beginning, and then use my last figure to help visualize my findings at the end. I also use a map to show my region in the top right. 
+
+8) centering your primary message
+
+My primary message is that agricultural water use is changing, but water stress remains high - this is all present in the logical flow of the document. This specific interpretation is kinda off too the side, but my two conflicting trends are dead center of the infographic.
+
+
+
+9) considering accessibility (e.g. colorblind-friendly palettes / contrast, alt text)
+
+I made sure my color palettes don't have hues that are too similar, and that the figure can still be interpreted somewhat in black and white. I also avoided using and red or green.
+
+
+
+applying a DEI lens to your design, as appropriate (e.g. considering the people / communities / places represented in your data, consider how you frame your questions / issue)
+
+
+
+
 1.  Summarize the key feedback points you received on your FPM #3 draft visualizations.
 
 My main feedback on my map images was to find a way to label my countries, and to change my line colors in my trend graph to correlate with the colors. I was also advised to zero in on specific countries on my trend so it wasn't so crowded. And on one of my figures that I didn't end up using, but did do a similar trend, I was advised to put more text explaining what's going on, or just make it more explicit what relatively complex figures are showing. In my waffle chart, I was both advised to put units in, and to keep units out of it, because the visual is what's important.
