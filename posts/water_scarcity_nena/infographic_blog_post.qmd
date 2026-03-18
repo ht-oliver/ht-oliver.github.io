@@ -114,7 +114,7 @@ ref_map <- ggplot() +
   ) +
   annotation_scale()
 
-ref_map
+# ref_map
 
 ## Map for agriculture per capita in 2000
 ag_2000 <-
