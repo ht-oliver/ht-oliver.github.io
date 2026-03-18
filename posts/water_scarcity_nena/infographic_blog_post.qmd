@@ -1,5 +1,5 @@
 ---
-title: "Water Stress in the North East and North Africa Region"
+title: "Water Stress in the Near East and North Africa Region"
 author: Henry Oliver
 date: March 17, 2026
 format: html
