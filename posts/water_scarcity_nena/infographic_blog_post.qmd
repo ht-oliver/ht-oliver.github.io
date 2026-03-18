@@ -1,7 +1,7 @@
 ---
-title: "Water Stress in the North African and Near East Region"
+title: "Water Stress in the North East and North Africa Region"
 author: Henry Oliver
-date: March 9, 2026
+date: March 17, 2026
 format: html
 warning: False
 code-fold: true
@@ -12,7 +12,9 @@ code-fold: true
 Imagine trying to run a farm, power cities, and supply millions of people with water—while living in one of the driest regions on Earth. This is the reality for countries across the Near East and North Africa (NENA). As climate change intensifies heat and drought, water scarcity is becoming an even more pressing challenge. While researching groundwater decline in arid regions across the globe, I became curious about a bigger question: How has water use in our most water-limited regions changed over the past two decades? To investigate, I used the FAO’s AQUASTAT database to create an infographic exploring trends in water withdrawals and how they compare to the region’s limited renewable freshwater supplies.
 
 ```{r}
-knitr::include_graphics("eds230_final_viz.png")
+library(tidyverse)
+library(here)
+knitr::include_graphics(here("posts/water_scarcity_nena/eds240_final_viz.png"))
 ```
 
 ## Design Journey
@@ -132,7 +134,7 @@ ag_2000 <-
   ) +
   labs(fill = "Agricultural Water\nWithdrawal Per Capita", title = "2000")
 
-ag_2000
+#ag_2000
 
 
 ## Map for agriculture per capita in 2020
@@ -159,7 +161,7 @@ ag_2020 <- ggplot(water_nena %>% filter(year=="2020") %>% #filter to 2020
     plot.title = element_text(hjust = 0.5, color = "white", size = 24, face = "bold")) +
   labs(fill = "Agricultural Water\nWithdrawal Per Capita", title = "2020")
 
-ag_2020
+#ag_2020
 
 ## Agriculture trend 2000-2020
 # Trend lines for select NENA countries (2000-2022)
@@ -186,7 +188,7 @@ ag_trend <- water_nena %>%
   ) +
   labs(x = NULL, y = NULL, color = NULL)
 
-ag_trend
+#ag_trend
 
 ## Map for water withdrawal to available resource ratio 2000
 #  Prepare data and calculate the log10 ratio
@@ -248,7 +250,7 @@ theme(
     title = "2000"
   )
 
-stress_2000_log
+#stress_2000_log
 
 
 ## Map for water withdrawal to available resource ratio 2020
@@ -310,7 +312,7 @@ theme(
     title = "2020"
   )
 
-stress_2020_log
+#stress_2020_log
 
 ## Water withdrawal to available resource trend 2000-2020
 # Log ratio of water withdrawal to renewable resources (2000-2020)
@@ -343,7 +345,7 @@ log_trend <- water_nena %>%
   ) +
   labs(x = NULL, y = "Ratio of Withdrawals to Available\nRenewable Resources (log scale)", color = NULL)
 
-log_trend
+#log_trend
 
 
 ## Waffle chart of resources and withdrawals
@@ -412,7 +414,7 @@ withdrawals_waffle <- tibble(
 combined <- resources_waffle / withdrawals_waffle +
   plot_annotation(theme = theme(plot.background = element_rect(fill = NA, color = NA)))
 
-combined
+#combined
 ```
 
 ## Sources
