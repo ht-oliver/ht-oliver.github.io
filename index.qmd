@@ -18,23 +18,6 @@ toc: false
 ---
 
 ## Bio
-Hello! I'm Henry Oliver. Over the last decade I've worked with universities, state government, and private industry in a variety of data analysis, GIS, and research roles. I have three years of professional experience in groundwater resource management and distribution, and an academic focus on spatial data analysis, and land-use change over time.
-
-<!-- # Sample Text -->
-
-<!-- ## Sample Text -->
-
-<!-- ### Sample Text -->
-
-<!-- #### Sample Text -->
-
-<!-- ##### Sample Text -->
-
-<!-- ###### Sample *Text* -->
-
-<!-- ####### Sample **Text** -->
-
-<!-- **Sample TEXT** -->
-
-<!-- *Sample Text* -->
-
+Hello! I'm Henry Oliver. Over the last decade I've worked with universities, state government, and private industry in a variety of data analysis, GIS, and research roles. I have four years of professional experience in groundwater resource management and distribution, and an academic focus on spatial data analysis and remote sensing. I'm currently seeking employment opportunities in natural resource management in California, Colorado and New Mexico. 
+I'm still a novice website builder, and this site is still under construction, but feel free to click around if you want to learn a bit more about the work I've done. 
+Some of my academic projects and professional interests are explored in the "Data Blog" tab. And my resume can be found on the "Resources" page.

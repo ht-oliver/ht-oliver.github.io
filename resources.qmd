@@ -1,6 +1,75 @@
 ---
-title: "resources"
+title: "Resources"
 format: html
 ---
 
-Resources Schmresources!
+## Henry Oliver
+
+📧 [h_oliver\@bren.ucsb.edu](mailto:h_oliver@bren.ucsb.edu) \| 📞 (505) 331-3695 \| 📍 Santa Barbara, CA
+
+[🌐 Website](https://ht-oliver.github.io) \| [GitHub](https://github.com/ht-oliver) \| [LinkedIn](https://linkedin.com/in/your-linkedin)
+
+------------------------------------------------------------------------
+
+## Education
+
+**Master of Environmental Data Science** *(Expected June 2026)*\
+Bren School of Environmental Science & Management, UC Santa Barbara
+
+-   **Capstone:** Quantifying the effect of agriculture on groundwater supply in arid regions\
+-   **Coursework:** R & Python for Data Science, Geospatial Analysis, Statistics, Environmental Modeling
+
+**Bachelor of Science in Environmental Science** *(May 2022)*\
+University of Texas, Austin — *Magna Cum Laude*
+
+-   **Coursework:** Remote Sensing, GIS for Environmental Applications, Hydrogeology, Landscape Ecology
+
+------------------------------------------------------------------------
+
+## Experience
+
+**Research Engineering Scientist Associate** — TCEQ, Austin, TX *(July 2022 – March 2025)*
+
+-   Conducted technical analysis and regulatory review of 100+ groundwater and surface-water systems supplying municipal drinking water
+-   Evaluated water supply capacity and demand projections for utilities serving populations from 100–100,000 residents
+-   Prepared technical reports and management plans in coordination with engineers, utility managers, and local governments
+
+**GIS Consultant** — HAGE Automotive (EV), Remote *(January 2022 – June 2022)*
+
+-   Performed geospatial suitability analysis to identify optimal EV charging infrastructure locations
+-   Integrated spatial datasets including traffic patterns, demographics, and amenities using ArcGIS
+-   Delivered mapping products and siting recommendations to support infrastructure planning
+
+**GIS Analyst Intern** — Southwest Environmental Finance Center, Albuquerque, NM *(May 2018 – August 2019)*
+
+-   Created GIS datasets and maps of municipal water distribution infrastructure
+-   Conducted risk-of-failure analysis to identify infrastructure vulnerabilities
+-   Analyzed historical usage data to develop water demand projections and system loss metrics
+
+------------------------------------------------------------------------
+
+## Projects
+
+**Masters Capstone — UCSB** *(Ongoing)*\
+Developing a geospatial analysis tool to evaluate relationships between agricultural practices and groundwater decline, integrating satellite and hydrologic datasets using R and Python.
+
+**Undergraduate Capstone — UT Austin** *(2022)*\
+Developed a 250-year land-use reconstruction of St. John, USVI using historical records, GIS, and remote sensing to support research on coastal erosion and coral reef health.
+
+------------------------------------------------------------------------
+
+## Skills
+
+| Category | Skills |
+|------------------------------------|------------------------------------|
+| **Programming** | Python, R, ArcGIS Pro |
+| **Analysis** | Statistical modeling, hydrologic & geospatial data processing, cartography |
+| **Water Resources** | Water supply evaluation, demand analysis, remote sensing applications |
+| **Professional** | Technical writing, data visualization, stakeholder communication |
+
+------------------------------------------------------------------------
+
+## Additional
+
+-   **Restaurant Manager** — Snarf's Sandwiches, Austin, TX *(2020–2021)*
+-   **Swimming/Water Polo Coach** — Head Coach, UT Austin Men's Water Polo Team (Club) *(2022–2023)*
